@@ -76,7 +76,7 @@ Misol uchun: {newCommand} Eshmat");
                                     await botClient.SendPhoto(
                                         chatId: chatId,
                                         photo: InputFile.FromStream(imageStream, $"{seed}.png"),
-                                        caption: $"Sizning Dicebear rasmingiz,  nomi:   {seed}.png",
+                                        caption: $"Sizning Dicebear rasmingiz \ud83e\uddf8,  nomi:   {seed}.png",
                                         cancellationToken: cancellationToken);
                                 
                                     logger.LogInformation(
