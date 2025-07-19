@@ -1,6 +1,11 @@
+# build output
 bin/
 obj/
+*.dll
+*.exe
+*.log
+
+# user-specific
 *.user
 *.suo
-*.log
-*.vs
+*.vs/
