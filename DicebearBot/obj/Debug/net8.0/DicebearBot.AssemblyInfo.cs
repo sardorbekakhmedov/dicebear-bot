@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DicebearBot")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ae97e6e710fe7839554fcbaa6e8989297a7e8a61")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8ed2c55a4cf95e6fa74cae418b7d9bd350ac3186")]
 [assembly: System.Reflection.AssemblyProductAttribute("DicebearBot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DicebearBot")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

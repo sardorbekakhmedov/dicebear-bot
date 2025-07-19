@@ -33,7 +33,7 @@ public class MessageSenderService(
                         messageText: GetHelpCommandText());
                     
                     logger.LogInformation(
-                        $@"{GetHelpCommandText()}, ChatId: {chatId},  Username: {username}, MessageText: {messageText}, DateTime: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
+                        $@"Sended message:  {GetHelpCommandText()}, ChatId: {chatId},  Username: {username}, MessageText: {messageText}, DateTime: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
                     
                     return;
                 }
@@ -59,7 +59,7 @@ public class MessageSenderService(
                                 messageText: $@"Iltimos, buyruqdan keyin bitta probel tashlab matn (seed) kiriting. 
 Misol uchun: {newCommand} Eshmat");
                             
-                            logger.LogInformation($"Iltimos, buyruqdan keyin matn (seed) kiriting. Misol: /fun-emoji Eshmat. ChatId: {chatId},  Username: {username}, MessageText: {messageText}, DateTime: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
+                            logger.LogInformation($"Sended message:  Iltimos, buyruqdan keyin matn (seed) kiriting. Misol: /fun-emoji Eshmat. ChatId: {chatId},  Username: {username}, MessageText: {messageText}, DateTime: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
 
                         }
                         else
@@ -80,7 +80,7 @@ Misol uchun: {newCommand} Eshmat");
                                         cancellationToken: cancellationToken);
                                 
                                     logger.LogInformation(
-                                        $"Sizning Dicebear rasmingiz,  nomi: {seed}.png. ChatId: {chatId},  Username: {username}, MessageText: {messageText}, DateTime: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
+                                        $"Sended message:  Sizning Dicebear rasmingiz,  nomi: {seed}.png. ChatId: {chatId},  Username: {username}, MessageText: {messageText}, DateTime: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
 
                                 }
                                 else
@@ -93,7 +93,7 @@ Misol uchun: {newCommand} Eshmat");
                                         @"Avatar yaratishda xatolik yuz berdi. Iltimos keyinroq urinib ko‘ring.");
                                 
                                     logger.LogInformation(
-                                        $"Avatar yaratishda xatolik yuz berdi. Iltimos keyinroq urinib ko‘ring. ChatId: {chatId},  Username: {username}, MessageText: {messageText}, DateTime: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
+                                        $"Sended message:  Avatar yaratishda xatolik yuz berdi. Iltimos keyinroq urinib ko‘ring. ChatId: {chatId},  Username: {username}, MessageText: {messageText}, DateTime: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
                                 }
                             }
                         }
@@ -113,7 +113,7 @@ Quyidagi buyruqlardan birini ishlating:
 /pixel-art");
                         
                         logger.LogInformation(
-                            $@"Noma’lum buyruq.Quyidagi buyruqlardan birini ishlating: /fun-emoji, /bottts, /avataaars, /pixel-art. ChatId: {chatId},  Username: {username}, MessageText: {messageText}, DateTime: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
+                            $@"Sended message:  Noma’lum buyruq.Quyidagi buyruqlardan birini ishlating: /fun-emoji, /bottts, /avataaars, /pixel-art. ChatId: {chatId},  Username: {username}, MessageText: {messageText}, DateTime: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
                     }
                 }
                 else
@@ -125,7 +125,7 @@ Quyidagi buyruqlardan birini ishlating:
                         messageText: @"Iltimos, avatar olish uchun buyruqdan foydalaning.");
                     
                     logger.LogInformation(
-                        $"Iltimos, avatar olish uchun buyruqdan foydalaning. ChatId: {chatId},  Username: {username}, MessageText: {messageText}, DateTime: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
+                        $"Sended message:  Iltimos, avatar olish uchun buyruqdan foydalaning. ChatId: {chatId},  Username: {username}, MessageText: {messageText}, DateTime: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
                 }
 
 
@@ -134,7 +134,7 @@ Quyidagi buyruqlardan birini ishlating:
             {
                 var from = update.Message?.From;
                 logger.LogInformation(
-                    $"Rasmni yuborishda xatolik yuz berdi. ChatId: {chatId},  Username: {username}, MessageText: {messageText}, DateTime: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
+                    $"Sended message:  Rasmni yuborishda xatolik yuz berdi. ChatId: {chatId},  Username: {username}, MessageText: {messageText}, DateTime: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
                 throw;
             }
         }
