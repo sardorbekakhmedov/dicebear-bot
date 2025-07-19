@@ -51,3 +51,4 @@ C:\Dev\DicebearBot\DicebearBot\bin\Debug\net8.0\runtimes\browser\lib\net8.0\Syst
 C:\Dev\DicebearBot\DicebearBot\obj\Debug\net8.0\DicebearBot.csproj.AssemblyReference.cache
 C:\Dev\DicebearBot\DicebearBot\obj\Debug\net8.0\Dicebear.88999F2E.Up2Date
 C:\Dev\DicebearBot\DicebearBot\bin\Debug\net8.0\Microsoft.Extensions.Http.dll
+C:\Dev\DicebearBot\DicebearBot\obj\Debug\net8.0\DicebearBot.sourcelink.json
