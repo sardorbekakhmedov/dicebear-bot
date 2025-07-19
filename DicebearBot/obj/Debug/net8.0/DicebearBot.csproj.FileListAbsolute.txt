@@ -52,3 +52,7 @@ C:\Dev\DicebearBot\DicebearBot\obj\Debug\net8.0\DicebearBot.csproj.AssemblyRefer
 C:\Dev\DicebearBot\DicebearBot\obj\Debug\net8.0\Dicebear.88999F2E.Up2Date
 C:\Dev\DicebearBot\DicebearBot\bin\Debug\net8.0\Microsoft.Extensions.Http.dll
 C:\Dev\DicebearBot\DicebearBot\obj\Debug\net8.0\DicebearBot.sourcelink.json
+C:\Dev\DicebearBot\DicebearBot\bin\Debug\net8.0\Serilog.dll
+C:\Dev\DicebearBot\DicebearBot\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
+C:\Dev\DicebearBot\DicebearBot\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+C:\Dev\DicebearBot\DicebearBot\bin\Debug\net8.0\Serilog.Sinks.File.dll
