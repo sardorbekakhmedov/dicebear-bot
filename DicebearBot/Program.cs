@@ -39,5 +39,5 @@ catch (Exception ex)
 }
 finally
 {
-    Log.CloseAndFlush(); // Serilog resurslarini tozalaydi
+    Log.CloseAndFlush();
 }
