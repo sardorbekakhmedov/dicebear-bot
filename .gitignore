@@ -1,6 +1,7 @@
 # build output
 bin/
 obj/
+*.txt
 *.dll
 *.exe
 *.log
