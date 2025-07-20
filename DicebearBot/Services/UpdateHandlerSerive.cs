@@ -20,10 +20,9 @@ public class BotUpdateHandlerSerive(
     {
         try
         {
-            var from = update.Message?.From;
-            logger.LogInformation($"From: {from?.Username ?? from?.FirstName ?? from!.Id.ToString()}, Message type: {update.Type}, DateTime: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
+            logger.LogInformation($"ID: {update.Id}, Message type: {update.Type}, DateTime: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
 
-            await messageSenderService.SendMessageToBotAsync(botClient, update, cancellationToken);
+            await messageSenderService.SendMessageAsync(botClient, update, cancellationToken);
         }
         catch (DicebearBotException ex)
         {

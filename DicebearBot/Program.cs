@@ -1,43 +1,39 @@
 ﻿using DicebearBot.Services;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Telegram.Bot;
 using Telegram.Bot.Polling;
 
-try
-{
-    var builder = Host.CreateApplicationBuilder(args);
-    builder.Logging.AddSerilog();
-    
-    var logDirectory = Path.Combine(AppContext.BaseDirectory, "Logs");
-    Directory.CreateDirectory(logDirectory);
+var builder = Host.CreateApplicationBuilder(args);
+builder.Logging.AddSerilog();
 
-    Log.Logger = new LoggerConfiguration()
-        .MinimumLevel.Information()
-        .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
-        .CreateLogger();
+var logDirectory = Path.Combine(AppContext.BaseDirectory, "Logs");
+Directory.CreateDirectory(logDirectory);
 
-    builder.Services.AddHttpClient();
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .WriteTo.File("Logs/log.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
 
-    var botToken = builder.Configuration["TelegramConfiguration:BotToken"];
+builder.Configuration
+    .SetBasePath(AppContext.BaseDirectory)
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true)
+    .AddEnvironmentVariables();
 
-    builder.Services.AddSingleton<ITelegramBotClient, TelegramBotClient>(
-        conf => new TelegramBotClient(botToken ?? throw new ArgumentException("Telegram BotToken not found!!!")));
+builder.Services.AddHttpClient();
 
-    builder.Services.AddSingleton<IUpdateHandler, BotUpdateHandlerSerive>();
-    builder.Services.AddTransient<IMessageSenderService, MessageSenderService>();
-    builder.Services.AddTransient<IHttpClientHelperService, HttpClientHelperService>();
+var botToken = builder.Configuration["TelegramConfiguration:BotToken"];
 
-    builder.Services.AddHostedService<BotHostedService>();
+builder.Services.AddSingleton<ITelegramBotClient, TelegramBotClient>(
+    conf => new TelegramBotClient(botToken ?? throw new ArgumentException("Telegram BotToken not found!!!")));
 
-    await builder.Build().RunAsync(); // RunAsync - bu yerda to‘g‘riroq
-}
-catch (Exception ex)
-{
-    Log.Fatal(ex, "Application stopped");
-}
-finally
-{
-    Log.CloseAndFlush();
-}
+builder.Services.AddSingleton<IUpdateHandler, BotUpdateHandlerSerive>();
+builder.Services.AddTransient<IMessageSenderService, MessageSenderService>();
+builder.Services.AddTransient<IHttpClientHelperService, HttpClientHelperService>();
+
+builder.Services.AddHostedService<BotHostedService>();
+
+await builder.Build().RunAsync(); 
