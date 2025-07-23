@@ -33,6 +33,7 @@ builder.Services.AddSingleton<ITelegramBotClient, TelegramBotClient>(
 builder.Services.AddSingleton<IUpdateHandler, BotUpdateHandlerSerive>();
 builder.Services.AddTransient<IMessageSenderService, MessageSenderService>();
 builder.Services.AddTransient<IHttpClientHelperService, HttpClientHelperService>();
+builder.Services.AddTransient<IGenerateKeybordService, GenerateKeybordService>();
 
 builder.Services.AddHostedService<BotHostedService>();
 

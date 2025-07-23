@@ -16,7 +16,8 @@ public interface IMessageSenderService
 
 public class MessageSenderService(
     IConfiguration configuration,
-    IHttpClientHelperService httpClientHelperService,
+    IHttpClientHelperService httpClientHelperService, 
+    IGenerateKeybordService generateKeybordService,
     ILogger<MessageSenderService> logger) : IMessageSenderService
 {
 
@@ -191,7 +192,7 @@ public class MessageSenderService(
         
         var buttonsPerRow = configuration.GetSection("Dicebear").GetValue<int>("ButtonsPerRow", 2);
 
-        var inlineKeyboard = GenerateInlineKeyboardWithOtherCallbackData(options, buttonsPerRow);
+        var inlineKeyboard = generateKeybordService.GenerateInlineKeyboardWithOtherCallbackData(options, buttonsPerRow);
         
         await botClient.SendMessage(
             chatId: callbackQuery.Message.Chat.Id,
@@ -234,7 +235,7 @@ public class MessageSenderService(
 
         var buttonsPerRow = configuration.GetValue<int>("Dicebear:ColorsRow", 4);
 
-        var inlineKeyboard = GenerateInlineKeyboardWithOtherCallbackData(buttons, buttonsPerRow);
+        var inlineKeyboard = generateKeybordService.GenerateInlineKeyboardWithOtherCallbackData(buttons, buttonsPerRow);
 
         await botClient.SendMessage(
             chatId: callbackQuery.Message.Chat.Id,
@@ -277,7 +278,7 @@ public class MessageSenderService(
         
         var buttonsPerRow = configuration.GetSection("Dicebear").GetValue<int>("ButtonsPerRow", 2);
 
-        var inlineKeyboard = GenerateInlineKeyboard(formatImages, buttonsPerRow);
+        var inlineKeyboard = generateKeybordService.GenerateInlineKeyboard(formatImages, buttonsPerRow);
         
         var text = "✅ Rasm formatini tanlang:";
 
@@ -316,7 +317,7 @@ public class MessageSenderService(
 
         int buttonsPerRow = configuration.GetSection("Dicebear").GetValue<int>("ButtonsPerRow", 2);
 
-        var inlineKeyboard = GenerateInlineKeyboard(commands, buttonsPerRow);
+        var inlineKeyboard = generateKeybordService.GenerateInlineKeyboard(commands, buttonsPerRow);
 
         var text = "Quyidagi buyruqlardan birini tanlang:";
 
@@ -328,37 +329,6 @@ public class MessageSenderService(
 
         logger.LogInformation(
             $"Sended inline command list. ChatId: {chatId}, Username: {username}, MessageText: {messageText}, DateTime: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
-    }
-
-    private InlineKeyboardMarkup GenerateInlineKeyboard(List<string> commands, int columns = 2)
-    {
-        var keyboard = new List<List<InlineKeyboardButton>>();
-
-        for (int i = 0; i < commands.Count; i += columns)
-        {
-            var row = commands
-                .Skip(i)
-                .Take(columns)
-                .Select(cmd => InlineKeyboardButton.WithCallbackData(cmd, cmd))
-                .ToList();
-
-            keyboard.Add(row);
-        }
-
-        return new InlineKeyboardMarkup(keyboard);
-    }
-    
-    private InlineKeyboardMarkup GenerateInlineKeyboardWithOtherCallbackData(List<InlineKeyboardButton> buttons, int columns = 4)
-    {
-        var keyboard = new List<List<InlineKeyboardButton>>();
-
-        for (int i = 0; i < buttons.Count; i += columns)
-        {
-            var row = buttons.Skip(i).Take(columns).ToList();
-            keyboard.Add(row);
-        }
-
-        return new InlineKeyboardMarkup(keyboard);
     }
 
 
